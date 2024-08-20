@@ -1,15 +1,15 @@
 {
     "Artificer": "[2 weapons], light crossbow, 20 bolts, [choose armor], thieves tools, dungeoneer's pack [THIS INCLUDES A BUNCH OF ITEMS], tinker's tools, [choose artisan tools]",
-    "Barbarian": "a",
-    "Bard": "a",
-    "Cleric": "a",
-    "Druid": "a",
-    "Fighter": "a",
-    "Monk": "a",
-    "Paladin": "a",
-    "Ranger": "a",
-    "Rogue": "a",
-    "Sorcerer": "a",
-    "Warlock": "a" ,
-    "Wizard": "a"
+    "Barbarian": "2",
+    "Bard": "3",
+    "Cleric": "4",
+    "Druid": "5",
+    "Fighter": "6",
+    "Monk": "7",
+    "Paladin": "8",
+    "Ranger": "9",
+    "Rogue": "10",
+    "Sorcerer": "11",
+    "Warlock": "12" ,
+    "Wizard": "13"
 }
