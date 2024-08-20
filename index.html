@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5e Starting Item Generator</title>
     <link rel="stylesheet" href="./style.css">
-    <script type = "functions" src="functions.js"></script>
+    <script src="./functions.js" defer></script>
 </head>
 <body>
     <h1>5e Starting Item Generator</h1>
     <div class = classes>
-        <form action="./index.html">
+        <form action="./index.html" onsubmit="return false">
             <label for="5e-classes">Choose a class</label>
             <select id="5e-classes" name="user-class">
                 <option value="Artificer">Artificer</option>
@@ -27,12 +27,13 @@
                 <option value="Warlock">Warlock</option>
                 <option value="Wizard">Wizard</option>
             </select>
-            <!--
-            For backgrounds, add another select id 5e-backgrounds instead here
-            I think the button should still work at the end and take multiple queries
-            -->
-            <button type="submit" onClick="generate()">Submit</button>
+            <select id="backgrounds" name="user-background">
+                <option value="City Watch">City Watch</option>
+                <option value="Acolyte">Acolyte</option>
+            </select>
+            <button type="submit" onClick="generate(document.getElementById('5e-classes').value)">Submit</button>
         </form>
     </div>
+    <div id = result></div>
 </body>
 </html>
