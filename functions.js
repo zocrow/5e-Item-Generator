@@ -24,10 +24,12 @@ function generate(feClass)
     }
 }
 
+//Set up any options for class-based starting option choices (usually weapons or armor)
 function setClassOptions(feClass)
 {
     if (feClass.localeCompare("Artificer") == 0)
     {
+        //TODO
         const tempInner = "";
         document.getElementById('classOptions').innerHTML = tempInner;
     }
@@ -77,9 +79,11 @@ function setClassOptions(feClass)
         const tempInner = "";
         document.getElementById('classOptions').innerHTML = tempInner;
     }
-    alert(feClass);
+    //To see what feClass is
+    //alert(feClass);
 }
 
+//Set up any options for background starting option choices
 function setBackgroundOptions(feBackground)
 {
     //If the background is not selected, just put nothing in the class options div
@@ -94,20 +98,21 @@ function setBackgroundOptions(feBackground)
         var tempInner = '';
         document.getElementById('classOptions').innerHTML = tempInner;
     }
+    //To see what feBackground is 
+    //alert(feBackground);
 }
 
 function determineIfGenerateShouldBeThere(feClass, feBackground)
 {
-    if (feClass.localeCompare("--Choose a Background--") == 0 || feBackground.localeCompare("--Choose a Class--") == 0)
-        {
-            var tempInner = '';
-            document.getElementById('submitButton').innerHTML = tempInner;
-        }
+    if (feClass.localeCompare("--Choose a Class--") == 0 || feBackground.localeCompare("--Choose a Background--") == 0)
+    {
+        document.getElementById('submitButton').innerHTML = '';
+    }
     else
     {
         var tempInner = 
         '<form action="./index.html" onsubmit="return false" onClick="generate(document.getElementById("5e-classes").value)">\
-            <button type="submit">Generate Item List</button>\
+            <button type="submit" onClick="generate(document.getElementById("5e-classes").value)">Generate Item List</button>\
         </form>';
         document.getElementById('submitButton').innerHTML = tempInner;
     }

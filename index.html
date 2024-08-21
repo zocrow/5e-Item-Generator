@@ -12,7 +12,7 @@
     <div class = classes>
         <form action="./index.html" onsubmit="return false">
             <label for="5e-classes">Choose a Class and Background</label>
-            <select id="5e-classes" name="user-class" onchange="setClassOptions(document.getElementById('5e-classes').value)" onchange="determineIfGenerateShouldBeThere(document.getElementById('5e-classes').value, document.getElementById('5e-backgrounds').value)">
+            <select id="5e-classes" name="user-class" onchange="setClassOptions(document.getElementById('5e-classes').value); determineIfGenerateShouldBeThere(document.getElementById('5e-classes').value, document.getElementById('5e-backgrounds').value);">
                 <option value="--Choose a Class--">--Choose a Class--</option>
                 <option value="Artificer">Artificer</option>
                 <option value="Barbarian">Barbarian</option>
@@ -28,7 +28,7 @@
                 <option value="Warlock">Warlock</option>
                 <option value="Wizard">Wizard</option>
             </select>
-            <select id="5e-backgrounds" name="user-background" onchange="setBackgroundOptions(document.getElementById('5e-backgrounds').value)" onchange="determineIfGenerateShouldBeThere(document.getElementById('5e-classes').value, document.getElementById('5e-backgrounds').value)">
+            <select id="5e-backgrounds" name="user-background" onchange="setBackgroundOptions(document.getElementById('5e-backgrounds').value); determineIfGenerateShouldBeThere(document.getElementById('5e-classes').value, document.getElementById('5e-backgrounds').value);">
                 <option value="--Choose a Background--">--Choose a Background--</option>
                 <option value="City Watch">City Watch</option>
                 <option value="Acolyte">Acolyte</option>
@@ -40,6 +40,6 @@
     <div id = "classOptions"></div>
     <div id = "backgroundOptions"></div>
     <div id = "submitButton"></div>
-    <div id = result></div>
+    <div id = "result"></div>
 </body>
 </html>
