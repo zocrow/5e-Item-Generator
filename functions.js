@@ -90,13 +90,13 @@ function setBackgroundOptions(feBackground)
     if (feBackground.localeCompare("--Choose a Background--") == 0)
     {
         var tempInner = '';
-        document.getElementById('classOptions').innerHTML = tempInner;
+        document.getElementById('backgroundOptions').innerHTML = tempInner;
     }
     //No options for city watch, so we just leave the class options div blank
     else if (feBackground.localeCompare("City Watch") == 0)
     {
         var tempInner = '';
-        document.getElementById('classOptions').innerHTML = tempInner;
+        document.getElementById('backgroundOptions').innerHTML = tempInner;
     }
     //To see what feBackground is 
     //alert(feBackground);
@@ -111,9 +111,9 @@ function determineIfGenerateShouldBeThere(feClass, feBackground)
     else
     {
         var tempInner = 
-        '<form action="./index.html" onsubmit="return false" onClick="generate(document.getElementById("5e-classes").value)">\
-            <button type="submit" onClick="generate(document.getElementById("5e-classes").value)">Generate Item List</button>\
-        </form>';
+        `<form action="./index.html" onsubmit="return false">\
+            <button type="submit" onClick="generate(document.getElementById('5e-classes').value)">Submit</button>\
+        </form>`;
         document.getElementById('submitButton').innerHTML = tempInner;
     }
 }
