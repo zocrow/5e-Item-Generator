@@ -1,27 +1,75 @@
-function generate(feClass)
+function generate(feClass, feBackground, weapons, armor)
 {
+    //TODO: include feBackground items from a new json file
     var classItemsURL =
-    "https://raw.githubusercontent.com/zocrow/5e-Item-Generator/main/classitems.json";
+        "https://raw.githubusercontent.com/zocrow/5e-Item-Generator/main/classitems.json";
 
-    document.getElementById('result').innerHTML = "Generated Items: \n"
+    var backgroundItemsURL = 
+        "TODO";
+
+    //Formatting for top of results
+    document.getElementById('result').innerHTML = "<h2>Generated Items for a " + feClass + " with a " + feBackground + " background: <h2>\
+        <h3>Weapons:</h3>";
+
+    //Loop through to get weapons
+    for (i = 1; i < 5; i++)
+    {
+        curWeapon = "w" + i.toString();
+        try
+        {
+            document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + document.getElementById(curWeapon).value + ", ";
+        }
+        catch(error)
+        {
+            //This is not a very sophisticated way of solving this issue of a null 'result' variable, but it works.
+        }
+    }
+
+    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone'>Armor:</h3>";
+
+    //Formatting for armor part of results
+    try
+    {
+        document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + document.getElementById('a1').value;
+    }
+    catch
+    {
+        document.getElementById('delIfNone').innerHTML = "";
+    }
+
+    //formatting for special items tab in item list
+    //Exclusively for bard, sorceror, warlock, and wizard
+    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone'>Special Items:</h3>";
+    for (i = 1; i < 5; i++)
+        {
+            curSpecial = "s" + i.toString();
+            try
+            {
+                document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + document.getElementById(curSpecial).value + ", ";
+            }
+            catch(error)
+            {
+                //Once again, not very sophisticated
+
+                //If i = 1 and the value of s1 is null, then just delete the special items tab
+                if (i == 1)
+                {
+                    document.getElementById('delIfNone').innerHTML = "";
+                }
+            }
+        }
+
+
     //Get the class items JSON file as an object from GitHub, display it on HTML 
     fetch(classItemsURL)
         .then(function(res) { return res.json(); })
         .then(function(classItems) {
             document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + classItems[feClass];
     });
-    //End JSON shenanigans
 
+    //Do the same for background items from GitHub, also display on HTML
 
-
-    if (feClass.localeCompare("Artificer") == 0)
-    {
-        //alert('you picked artificer');
-    }
-    else
-    {
-        //alert('you didnt pick artificer');
-    }
+    //End JSON shenanigan
 }
 
 //Set up any options for class-based starting option choices (usually weapons or armor)
@@ -30,7 +78,36 @@ function setClassOptions(feClass)
     if (feClass.localeCompare("Artificer") == 0)
     {
         //TODO
-        const tempInner = "";
+        const tempInner = 
+            '<form action="./index.html" onsubmit="return false">\
+                <label for="ArtificerChoices">Choose two weapons and an armor</label>\
+                <select id="w1" name="w1">\
+                    <option value="Club">Club</option>\
+                    <option value="Dagger">Dagger</option>\
+                    <option value="Greatclub">Greatclub</option>\
+                    <option value="Javelin">Javelin</option>\
+                    <option value="Light Hammer">Light Hammer</option>\
+                    <option value="Mace">Mace</option>\
+                    <option value="Quarterstaff">Quarterstaff</option>\
+                    <option value="Sickle">Sickle</option>\
+                    <option value="Spear">Spear</option>\
+                </select>\
+                <select id="w2" name="w2">\
+                    <option value="Club">Club</option>\
+                    <option value="Dagger">Dagger</option>\
+                    <option value="Greatclub">Greatclub</option>\
+                    <option value="Javelin">Javelin</option>\
+                    <option value="Light Hammer">Light Hammer</option>\
+                    <option value="Mace">Mace</option>\
+                    <option value="Quarterstaff">Quarterstaff</option>\
+                    <option value="Sickle">Sickle</option>\
+                    <option value="Spear">Spear</option>\
+                </select>\
+                <select id="a1" name="a1">\
+                    <option value="Leather Armor">Leather Armor</option>\
+                    <option value="Scale Mail">Scale Mail</option>\
+                </select>\
+            </form>';
         document.getElementById('classOptions').innerHTML = tempInner;
     }
     else if (feClass.localeCompare("Barbarian") == 0)
@@ -39,7 +116,7 @@ function setClassOptions(feClass)
         const tempInner = 
             '<form action="./index.html" onsubmit="return false">\
                 <label for="BarbarianChoices">Choose two weapons</label>\
-                <select id="Weapon1Choices" name="weapon1">\
+                <select id="w1" name="w1">\
                     <option value="Greataxe">Greataxe</option>\
                     <option value="Flail">Flail</option>\
                     <option value="Glaive">Glaive</option>\
@@ -58,7 +135,7 @@ function setClassOptions(feClass)
                     <option value="Warhammer">Warhammer</option>\
                     <option value="Whip">Whip</option>\
                 </select>\
-                <select id="Weapon2Choices" name="weapon2">\
+                <select id="w2" name="w2">\
                     <option value="2 Handaxes">2 Handaxes</option>\
                     <option value="Club">Club</option>\
                     <option value="Dagger">Dagger</option>\
@@ -70,7 +147,6 @@ function setClassOptions(feClass)
                     <option value="Sickle">Sickle</option>\
                     <option value="Spear">Spear</option>\
                 </select>\
-                <button type="submit">Submit Weapon Choice</button>\
             </form>';
         document.getElementById('classOptions').innerHTML = tempInner;
     }
@@ -112,7 +188,7 @@ function determineIfGenerateShouldBeThere(feClass, feBackground)
     {
         var tempInner = 
         `<form action="./index.html" onsubmit="return false">\
-            <button type="submit" onClick="generate(document.getElementById('5e-classes').value)">Submit</button>\
+            <button type="submit" onClick="generate(document.getElementById('5e-classes').value, document.getElementById('5e-backgrounds').value, '', '')">Submit</button>\
         </form>`;
         document.getElementById('submitButton').innerHTML = tempInner;
     }
