@@ -96,6 +96,7 @@ async function generate(feClass, feBackground, weapons, armor)
     {
         //If your class lets you pick an adventuring pack, do this
         pack = document.getElementById('p1').value;
+        alert(pack);
         document.getElementById('pack').innerHTML = document.getElementById('pack').innerHTML + "<h4>" + pack + ":</h4>";
     }
     catch(error)
@@ -112,7 +113,7 @@ async function generate(feClass, feBackground, weapons, armor)
         }
         else if (cutPack.localeCompare("plomat's pack") == 0)
         {
-            pack = "Diplotmat's pack"
+            pack = "Diplomat's pack"
         }
         else if (cutPack.localeCompare("tainer's pack") == 0)
         {
@@ -136,6 +137,9 @@ async function generate(feClass, feBackground, weapons, armor)
 
     //now this next final block before the raw text file will show all the items in the player's chosen/default pack
     //Pull one more json file...
+    packURL = "https://raw.githubusercontent.com/zocrow/5e-Item-Generator/main/packitems.json";
+    const packItems = await getData(packURL);
+    document.getElementById('pack').innerHTML = document.getElementById('pack').innerHTML + packItems[pack];
 }
 
 //Set up any options for class-based starting option choices (usually weapons or armor)
@@ -214,6 +218,43 @@ function setClassOptions(feClass)
                     <option value="Spear">Spear</option>\
                 </select>\
             </form>';
+        document.getElementById('classOptions').innerHTML = tempInner;
+    }
+    else if (feClass.localeCompare("Bard") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="BardChoices">Choose a weapon, an instrument, and an adventuring pack</label>\
+            <select id="w1" name="w1">\
+                <option value="Rapier">Rapier</option>\
+                <option value="Longsword">Longsword</option>\
+                <option value="Club">Club</option>\
+                <option value="Dagger">Dagger</option>\
+                <option value="Greatclub">Greatclub</option>\
+                <option value="Javelin">Javelin</option>\
+                <option value="Light Hammer">Light Hammer</option>\
+                <option value="Mace">Mace</option>\
+                <option value="Quarterstaff">Quarterstaff</option>\
+                <option value="Sickle">Sickle</option>\
+                <option value="Spear">Spear</option>\
+            </select>\
+            <select id="s1" name="s1">\
+                <option value="Lute">Lute</option>\
+                <option value="Bagpipes">Bagpipes</option>\
+                <option value="Drum">Drum</option>\
+                <option value="Dulcimer">Dulcimer</option>\
+                <option value="Flute">Flute</option>\
+                <option value="Lyre">Lyre</option>\
+                <option value="Horn">Horn</option>\
+                <option value="Pan flute">Pan flute</option>\
+                <option value="Shawm">Shawm</option>\
+                <option value="Viol">Viol</option>\
+            </select>\
+            <select id="p1" name="p1">\
+                <option value="Diplomat's pack">Diplomat's pack</option>\
+                <option value="Entertainer's pack">Entertainer's pack</option>\
+            </select>\
+        </form>`;
         document.getElementById('classOptions').innerHTML = tempInner;
     }
     else if (feClass.localeCompare("Rogue") == 0)

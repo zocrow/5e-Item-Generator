@@ -1,7 +1,7 @@
 {
-    "Artificer": "[choose 2 weapons], light crossbow, 20 bolts, [choose armor], thieves tools, [use this with regex to find which pack to display dungeoneer's pack",
-    "Barbarian": "4 javelins, an explorer's pack [THIS INCLUDES A BUNCH OF ITEMS]",
-    "Bard": "3",
+    "Artificer": "2 chosen weapons, light crossbow, 20 bolts, chosen armor, thieves tools, dungeoneer's pack",
+    "Barbarian": "2 chosen weapons, 4 javelins, explorer's pack",
+    "Bard": "Chosen weapon, dagger, chosen instrument, leather armor, chosen adventuring pack",
     "Cleric": "4",
     "Druid": "5",
     "Fighter": "6",
