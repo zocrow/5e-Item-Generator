@@ -5,7 +5,7 @@ function generate(feClass, feBackground, weapons, armor)
         "https://raw.githubusercontent.com/zocrow/5e-Item-Generator/main/classitems.json";
 
     var backgroundItemsURL = 
-        "TODO";
+        "https://raw.githubusercontent.com/zocrow/5e-Item-Generator/main/backgrounditems.json";
 
     //Formatting for top of results
     //TODO: Make an if statement to make "a" turn into "an" if the following class/background starts with a vowel
@@ -75,7 +75,16 @@ function generate(feClass, feBackground, weapons, armor)
     //Do the same for background items from GitHub, also display on HTML
 
     document.getElementById('bresult').innerHTML = document.getElementById('bresult').innerHTML + "<h3 id='delIfNone4'>Items granted by background:</h3>";
+
+    fetch(backgroundItemsURL)
+        .then(function(res) { return res.json(); })
+        .then(function(backgroundItems) {
+            document.getElementById('bresult').innerHTML = document.getElementById('bresult').innerHTML + backgroundItems[feBackground];
+    });
     //End JSON shenanigan
+
+    document.getElementById('cresult').innerHTML = document.getElementById('cresult').innerHTML + "<h3 id='willnotdelete!!!'>What's in your adventuring pack:</h3>";
+    //TODO: THE THING TO DO NEXT MORNING
 }
 
 //Set up any options for class-based starting option choices (usually weapons or armor)
@@ -154,6 +163,27 @@ function setClassOptions(feClass)
                     <option value="Spear">Spear</option>\
                 </select>\
             </form>';
+        document.getElementById('classOptions').innerHTML = tempInner;
+    }
+    else if (feClass.localeCompare("Rogue") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="RogueChoices">Choose two weapons and a pack of tools</label>\
+            <select id="w1" name="w1">\
+                <option value="Rapier">Rapier</option>\
+                <option value="Shortsword">Shortsword</option>\
+            </select>\
+            <select id="w2" name="w2">\
+                <option value="Shortbow and quiver of 20 arrows">Shortbow and quiver of 20 arrows</option>\
+                <option value="Shortsword">Shortsword</option>\
+            </select>\
+            <select id="t1" name="t1">\
+                <option value="Burglar's pack">Burglar's pack</option>\
+                <option value="Dungeoneer's pack">Dungeoneer's pack</option>\
+                <option value="Explorer's pack">Explorer's pack</option>\
+            </select>\
+        </form>`;
         document.getElementById('classOptions').innerHTML = tempInner;
     }
     else
