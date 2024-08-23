@@ -1,4 +1,4 @@
-function generate(feClass, feBackground, weapons, armor)
+async function generate(feClass, feBackground, weapons, armor)
 {
     //TODO: include feBackground items from a new json file
     var classItemsURL =
@@ -67,25 +67,75 @@ function generate(feClass, feBackground, weapons, armor)
     document.getElementById('cresult').innerHTML = document.getElementById('cresult').innerHTML + "<h3 id='delIfNone3'>Items granted by class:</h3>";
 
     //Get the class items JSON file as an object from GitHub, display it on HTML 
-    fetch(classItemsURL)
-        .then(function(res) { return res.json(); })
-        .then(function(classItems) {
-            document.getElementById('cresult').innerHTML = document.getElementById('cresult').innerHTML + classItems[feClass];
-    });
+    const classItems = await getData(classItemsURL);
+    document.getElementById('cresult').innerHTML = document.getElementById('cresult').innerHTML + classItems[feClass];
+    
+    //Old code that doesn't use the getData() function. It didn't work for extracting the type of pack given to the player if there are no choices available (artificer, for example)
+    // fetch(classItemsURL)
+    //     .then(function(res) { return res.json(); })
+    //     .then(function(classItemsURL) {
+    //         document.getElementById('cresult').innerHTML = document.getElementById('cresult').innerHTML + "<p id='classItems>" + classItems[feClass] + "</p>";});
+    
 
     //Do the same for background items from GitHub, also display on HTML
 
     document.getElementById('bresult').innerHTML = document.getElementById('bresult').innerHTML + "<h3 id='delIfNone4'>Items granted by background:</h3>";
 
-    fetch(backgroundItemsURL)
-        .then(function(res) { return res.json(); })
-        .then(function(backgroundItems) {
-            document.getElementById('bresult').innerHTML = document.getElementById('bresult').innerHTML + backgroundItems[feBackground];
-    });
-    //End JSON shenanigan
+    const backgroundItems = await getData(backgroundItemsURL);
+    document.getElementById('bresult').innerHTML = document.getElementById('bresult').innerHTML + backgroundItems[feBackground];
+    //Also old code
+    // fetch(backgroundItemsURL)
+    //     .then(function(res) { return res.json(); })
+    //     .then(function(backgroundItems) {
+    //         document.getElementById('bresult').innerHTML = document.getElementById('bresult').innerHTML + backgroundItems[feBackground];});
+    //End JSON shenanigans
 
     document.getElementById('pack').innerHTML = document.getElementById('pack').innerHTML + "<h3 id='willnotdelete!!!'>What's in your adventuring pack:</h3>";
-    //TODO: THE THING TO DO NEXT MORNING
+    var pack = "";
+    try
+    {
+        //If your class lets you pick an adventuring pack, do this
+        pack = document.getElementById('p1').value;
+        document.getElementById('pack').innerHTML = document.getElementById('pack').innerHTML + "<h4>" + pack + ":</h4>";
+    }
+    catch(error)
+    {
+        //If your class has a set adventuring pack, find the pack from the end of the item list in the json
+        cutPack = classItems[feClass].slice(-13);
+        if (cutPack.localeCompare("eoneer's pack") == 0)
+        {
+            pack = "Dungeoneer's Pack";
+        }
+        else if (cutPack.localeCompare("urglar's pack") == 0)
+        {
+            pack = "Burglar's pack"
+        }
+        else if (cutPack.localeCompare("plomat's pack") == 0)
+        {
+            pack = "Diplotmat's pack"
+        }
+        else if (cutPack.localeCompare("tainer's pack") == 0)
+        {
+            pack = "Entertainer's pack"
+        }
+        else if (cutPack.localeCompare("plorer's pack") == 0)
+        {
+            pack = "Explorer's pack"
+        }
+        else if (cutPack.localeCompare("Priest's pack") == 0)
+        {
+            pack = cutPack;
+            //because cutPack is just what we want
+        }
+        else
+        {
+            pack = "Scholar's pack"
+        }
+        document.getElementById('pack').innerHTML = document.getElementById('pack').innerHTML + "<h4>" + pack + ":</h4>";
+    }
+
+    //now this next final block before the raw text file will show all the items in the player's chosen/default pack
+    //Pull one more json file...
 }
 
 //Set up any options for class-based starting option choices (usually weapons or armor)
@@ -179,7 +229,7 @@ function setClassOptions(feClass)
                 <option value="Shortbow and quiver of 20 arrows">Shortbow and quiver of 20 arrows</option>\
                 <option value="Shortsword">Shortsword</option>\
             </select>\
-            <select id="t1" name="t1">\
+            <select id="p1" name="p1">\
                 <option value="Burglar's pack">Burglar's pack</option>\
                 <option value="Dungeoneer's pack">Dungeoneer's pack</option>\
                 <option value="Explorer's pack">Explorer's pack</option>\
@@ -230,3 +280,9 @@ function determineIfGenerateShouldBeThere(feClass, feBackground)
         document.getElementById('submitButton').innerHTML = tempInner;
     }
 }
+
+async function getData(url) {
+    const response = await fetch(url);
+  
+    return response.json();
+  }
