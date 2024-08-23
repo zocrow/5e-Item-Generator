@@ -258,7 +258,6 @@ function setClassOptions(feClass)
     }
     else if (feClass.localeCompare("Cleric") == 0)
     {
-
         const tempInner = 
         `<form action="./index.html" onsubmit="return false">\
             <label for="ClericChoices">Choose 2 weapons, armor, and an adventuring pack</label>\
@@ -288,8 +287,9 @@ function setClassOptions(feClass)
                 <option value="Explorer's Pack">Explorer's pack</option>\
             </select>\
         </form>`;
-        document.getElementById('classOptions').innerHTML = "<div class='note'>Cleric Note: You may only wield a warhammer and use chain mail if you are proficient in them</div>" + tempInner;
+        document.getElementById('classOptions').innerHTML = "<div class='note'>Cleric Note: You may only wield a warhammer and use chain mail if your character is proficient in them</div>" + tempInner;
     }
+    else if (feClass.localeCompare("Druid") == 0)
     else if (feClass.localeCompare("Rogue") == 0)
     {
         const tempInner = 
@@ -355,8 +355,8 @@ function determineIfGenerateShouldBeThere(feClass, feBackground)
     }
 }
 
-async function getData(url) {
+async function getData(url) 
+{
     const response = await fetch(url);
-  
     return response.json();
-  }
+}
