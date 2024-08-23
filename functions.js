@@ -12,6 +12,9 @@ function generate(feClass, feBackground, weapons, armor)
     document.getElementById('result').innerHTML = "<h2>Generated Items for a " + feClass + " with a " + feBackground + " background: <h2>\
         <h3>Weapon(s):</h3>";
 
+    document.getElementById('cresult').innerHTML = "";
+    document.getElementById('bresult').innerHTML = "";
+
     //Loop through to get weapons
     for (i = 1; i < 5; i++)
     {
@@ -60,19 +63,18 @@ function generate(feClass, feBackground, weapons, armor)
         }
     }
     
-    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone3'>Items granted by class:</h3>";
-    
+    document.getElementById('cresult').innerHTML = document.getElementById('cresult').innerHTML + "<h3 id='delIfNone3'>Items granted by class:</h3>";
 
     //Get the class items JSON file as an object from GitHub, display it on HTML 
     fetch(classItemsURL)
         .then(function(res) { return res.json(); })
         .then(function(classItems) {
-            document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + classItems[feClass];
+            document.getElementById('cresult').innerHTML = document.getElementById('cresult').innerHTML + classItems[feClass];
     });
 
     //Do the same for background items from GitHub, also display on HTML
 
-    document.getElementById('result)').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone3'>Items granted by background:</h3>";
+    document.getElementById('bresult').innerHTML = document.getElementById('bresult').innerHTML + "<h3 id='delIfNone4'>Items granted by background:</h3>";
     //End JSON shenanigan
 }
 
