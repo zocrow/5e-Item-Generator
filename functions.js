@@ -96,7 +96,6 @@ async function generate(feClass, feBackground, weapons, armor)
     {
         //If your class lets you pick an adventuring pack, do this
         pack = document.getElementById('p1').value;
-        alert(pack);
         document.getElementById('pack').innerHTML = document.getElementById('pack').innerHTML + "<h4>" + pack + ":</h4>";
     }
     catch(error)
@@ -109,28 +108,28 @@ async function generate(feClass, feBackground, weapons, armor)
         }
         else if (cutPack.localeCompare("urglar's pack") == 0)
         {
-            pack = "Burglar's pack"
+            pack = "Burglar's Pack";
         }
         else if (cutPack.localeCompare("plomat's pack") == 0)
         {
-            pack = "Diplomat's pack"
+            pack = "Diplomat's Pack";
         }
         else if (cutPack.localeCompare("tainer's pack") == 0)
         {
-            pack = "Entertainer's pack"
+            pack = "Entertainer's Pack";
         }
         else if (cutPack.localeCompare("plorer's pack") == 0)
         {
-            pack = "Explorer's pack"
+            pack = "Explorer's Pack";
         }
-        else if (cutPack.localeCompare("Priest's pack") == 0)
+        else if (cutPack.localeCompare("priest's pack") == 0)
         {
-            pack = cutPack;
+            pack = "Priest's Pack";
             //because cutPack is just what we want
         }
         else
         {
-            pack = "Scholar's pack"
+            pack = "Scholar's Pack"
         }
         document.getElementById('pack').innerHTML = document.getElementById('pack').innerHTML + "<h4>" + pack + ":</h4>";
     }
@@ -251,11 +250,45 @@ function setClassOptions(feClass)
                 <option value="Viol">Viol</option>\
             </select>\
             <select id="p1" name="p1">\
-                <option value="Diplomat's pack">Diplomat's pack</option>\
-                <option value="Entertainer's pack">Entertainer's pack</option>\
+                <option value="Diplomat's Pack">Diplomat's pack</option>\
+                <option value="Entertainer's Pack">Entertainer's pack</option>\
             </select>\
         </form>`;
         document.getElementById('classOptions').innerHTML = tempInner;
+    }
+    else if (feClass.localeCompare("Cleric") == 0)
+    {
+
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="ClericChoices">Choose 2 weapons, armor, and an adventuring pack</label>\
+            <select id="w1" name="w1">\
+                <option value="Mace">Mace</option>\
+                <option value="Warhammer">Warhammer</option>\
+            </select>\
+            <select id="w2" name="w2">\
+                <option value="A Crossbow and 20 bolts">A Crossbow and 20 bolts</option>\
+                <option value="Club">Club</option>\
+                <option value="Dagger">Dagger</option>\
+                <option value="Greatclub">Greatclub</option>\
+                <option value="Javelin">Javelin</option>\
+                <option value="Light Hammer">Light Hammer</option>\
+                <option value="Mace">Mace</option>\
+                <option value="Quarterstaff">Quarterstaff</option>\
+                <option value="Sickle">Sickle</option>\
+                <option value="Spear">Spear</option>\
+            </select>\
+            <select id="a1" name="a1">\
+                <option value="Scale Mail">Scale Mail</option>\
+                <option value="Leather Armor">Leather Armor</option>\
+                <option value="Chain Mail">Chain Mail</option>\
+            </select>\
+            <select id="p1" name="p1">\
+                <option value="Priest's Pack">Priest's pack</option>\
+                <option value="Explorer's Pack">Explorer's pack</option>\
+            </select>\
+        </form>`;
+        document.getElementById('classOptions').innerHTML = "<div class='note'>Cleric Note: You may only wield a warhammer and use chain mail if you are proficient in them</div>" + tempInner;
     }
     else if (feClass.localeCompare("Rogue") == 0)
     {
@@ -271,9 +304,9 @@ function setClassOptions(feClass)
                 <option value="Shortsword">Shortsword</option>\
             </select>\
             <select id="p1" name="p1">\
-                <option value="Burglar's pack">Burglar's pack</option>\
-                <option value="Dungeoneer's pack">Dungeoneer's pack</option>\
-                <option value="Explorer's pack">Explorer's pack</option>\
+                <option value="Burglar's Pack">Burglar's pack</option>\
+                <option value="Dungeoneer's Pack">Dungeoneer's pack</option>\
+                <option value="Explorer's Pack">Explorer's pack</option>\
             </select>\
         </form>`;
         document.getElementById('classOptions').innerHTML = tempInner;
