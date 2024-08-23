@@ -10,10 +10,11 @@ function generate(feClass, feBackground, weapons, armor)
     //Formatting for top of results
     //TODO: Make an if statement to make "a" turn into "an" if the following class/background starts with a vowel
     document.getElementById('result').innerHTML = "<h2>Generated Items for a " + feClass + " with a " + feBackground + " background: <h2>\
-        <h3>Weapon(s):</h3>";
+        <h3>Chosen Weapon(s):</h3>";
 
     document.getElementById('cresult').innerHTML = "";
     document.getElementById('bresult').innerHTML = "";
+    document.getElementById('pack').innerHTML = "";
 
     //Loop through to get weapons
     for (i = 1; i < 5; i++)
@@ -30,7 +31,7 @@ function generate(feClass, feBackground, weapons, armor)
         }
     }
 
-    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone1'>Armor:</h3>";
+    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone1'>Chosen Armor:</h3>";
 
     //Formatting for armor part of results
     try
@@ -83,7 +84,7 @@ function generate(feClass, feBackground, weapons, armor)
     });
     //End JSON shenanigan
 
-    document.getElementById('cresult').innerHTML = document.getElementById('cresult').innerHTML + "<h3 id='willnotdelete!!!'>What's in your adventuring pack:</h3>";
+    document.getElementById('pack').innerHTML = document.getElementById('pack').innerHTML + "<h3 id='willnotdelete!!!'>What's in your adventuring pack:</h3>";
     //TODO: THE THING TO DO NEXT MORNING
 }
 

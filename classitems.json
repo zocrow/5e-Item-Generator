@@ -1,5 +1,5 @@
 {
-    "Artificer": "[choose 2 weapons], light crossbow, 20 bolts, [choose armor], thieves tools, dungeoneer's pack [THIS INCLUDES A BUNCH OF ITEMS]",
+    "Artificer": "[choose 2 weapons], light crossbow, 20 bolts, [choose armor], thieves tools, [use this with regex to find which pack to display dungeoneer's pack",
     "Barbarian": "4 javelins, an explorer's pack [THIS INCLUDES A BUNCH OF ITEMS]",
     "Bard": "3",
     "Cleric": "4",
