@@ -8,8 +8,9 @@ function generate(feClass, feBackground, weapons, armor)
         "TODO";
 
     //Formatting for top of results
+    //TODO: Make an if statement to make "a" turn into "an" if the following class/background starts with a vowel
     document.getElementById('result').innerHTML = "<h2>Generated Items for a " + feClass + " with a " + feBackground + " background: <h2>\
-        <h3>Weapons:</h3>";
+        <h3>Weapon(s):</h3>";
 
     //Loop through to get weapons
     for (i = 1; i < 5; i++)
@@ -18,6 +19,7 @@ function generate(feClass, feBackground, weapons, armor)
         try
         {
             document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + document.getElementById(curWeapon).value + ", ";
+            //TODO: Chop off the last comma
         }
         catch(error)
         {
@@ -25,7 +27,7 @@ function generate(feClass, feBackground, weapons, armor)
         }
     }
 
-    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone'>Armor:</h3>";
+    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone1'>Armor:</h3>";
 
     //Formatting for armor part of results
     try
@@ -34,31 +36,32 @@ function generate(feClass, feBackground, weapons, armor)
     }
     catch
     {
-        document.getElementById('delIfNone').innerHTML = "";
+        document.getElementById('delIfNone1').innerHTML = "";
     }
 
     //formatting for special items tab in item list
     //Exclusively for bard, sorceror, warlock, and wizard
-    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone'>Special Items:</h3>";
+    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone2'>Special Items:</h3>";
     for (i = 1; i < 5; i++)
+    {
+        curSpecial = "s" + i.toString();
+        try
         {
-            curSpecial = "s" + i.toString();
-            try
+            document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + document.getElementById(curSpecial).value + ", ";
+        }
+        catch(error)
+        {
+            //Once again, not very sophisticated
+            //If i = 1 and the value of s1 is null, then just delete the special items tab
+            if (i == 1)
             {
-                document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + document.getElementById(curSpecial).value + ", ";
-            }
-            catch(error)
-            {
-                //Once again, not very sophisticated
-
-                //If i = 1 and the value of s1 is null, then just delete the special items tab
-                if (i == 1)
-                {
-                    document.getElementById('delIfNone').innerHTML = "";
-                }
+                document.getElementById('delIfNone2').innerHTML = "";
             }
         }
-
+    }
+    
+    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone3'>Items granted by class:</h3>";
+    
 
     //Get the class items JSON file as an object from GitHub, display it on HTML 
     fetch(classItemsURL)
@@ -69,6 +72,7 @@ function generate(feClass, feBackground, weapons, armor)
 
     //Do the same for background items from GitHub, also display on HTML
 
+    document.getElementById('result)').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone3'>Items granted by background:</h3>";
     //End JSON shenanigan
 }
 
