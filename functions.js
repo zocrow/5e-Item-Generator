@@ -290,6 +290,37 @@ function setClassOptions(feClass)
         document.getElementById('classOptions').innerHTML = "<div class='note'>Cleric Note: You may only wield a warhammer and use chain mail if your character is proficient in them</div>" + tempInner;
     }
     else if (feClass.localeCompare("Druid") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="DruidChoices">Choose 2 weapons</label>\
+            <select id="w1" name="w1">\
+                <option value="Wooden Shield">Wooden Shield</option>\
+                <option value="Club">Club</option>\
+                <option value="Dagger">Dagger</option>\
+                <option value="Greatclub">Greatclub</option>\
+                <option value="Javelin">Javelin</option>\
+                <option value="Light Hammer">Light Hammer</option>\
+                <option value="Mace">Mace</option>\
+                <option value="Quarterstaff">Quarterstaff</option>\
+                <option value="Sickle">Sickle</option>\
+                <option value="Spear">Spear</option>\
+            </select>\
+            <select id="w2" name="w2">\
+                <option value="Scimtar">Scimtar</option>\
+                <option value="Club">Club</option>\
+                <option value="Dagger">Dagger</option>\
+                <option value="Greatclub">Greatclub</option>\
+                <option value="Javelin">Javelin</option>\
+                <option value="Light Hammer">Light Hammer</option>\
+                <option value="Mace">Mace</option>\
+                <option value="Quarterstaff">Quarterstaff</option>\
+                <option value="Sickle">Sickle</option>\
+                <option value="Spear">Spear</option>\
+            </select>\
+        </form>`;
+        document.getElementById('classOptions').innerHTML = tempInner;
+    }
     else if (feClass.localeCompare("Rogue") == 0)
     {
         const tempInner = 

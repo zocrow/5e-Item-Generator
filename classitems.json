@@ -3,7 +3,7 @@
     "Barbarian": "2 chosen weapons, 4 javelins, explorer's pack",
     "Bard": "Chosen weapon, a dagger, chosen instrument, leather armor, chosen adventuring pack",
     "Cleric": "2 chosen weapons, chosen armor, a shield, a holy symbol, chosen adventuring pack",
-    "Druid": "5",
+    "Druid": "2 chosen weapons/weapon and shield, leather armor, a druidic focus (a replacement for material cost of spells), explorer's pack",
     "Fighter": "6",
     "Monk": "7",
     "Paladin": "8",
