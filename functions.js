@@ -404,6 +404,7 @@ function setClassOptions(feClass)
                 <option value="Explorer's Pack">Explorer's pack</option>\
             </select>\
         </form>`;
+        document.getElementById('classOptions').innerHTML = tempInner;
     }
     else if (feClass.localeCompare("Rogue") == 0)
     {

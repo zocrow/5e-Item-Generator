@@ -1,15 +1,15 @@
 {
-    "Artificer": "2 chosen weapons, light crossbow, 20 bolts, chosen armor, thieves tools, dungeoneer's pack",
-    "Barbarian": "2 chosen weapons, 4 javelins, explorer's pack",
+    "Artificer": "Chosen weapons, light crossbow, 20 bolts, chosen armor, thieves tools, dungeoneer's pack",
+    "Barbarian": "Chosen weapons, 4 javelins, explorer's pack",
     "Bard": "Chosen weapon, a dagger, chosen instrument, leather armor, chosen adventuring pack",
-    "Cleric": "2 chosen weapons, chosen armor, a shield, a holy symbol, chosen adventuring pack",
-    "Druid": "2 chosen weapons/weapon and shield, leather armor, a druidic focus (a replacement for material cost of spells), explorer's pack",
+    "Cleric": "Chosen weapons, chosen armor, a shield, a holy symbol, chosen adventuring pack",
+    "Druid": "Chosen weapons/weapon and shield, leather armor, a druidic focus (a replacement for material cost of spells), explorer's pack",
     "Fighter": "Chosen weapons, chosen armor, chosen adventuring pack",
     "Monk": "Chosen weapon, 10 darts, chosen adventuring pack",
-    "Paladin": "8",
-    "Ranger": "9",
-    "Rogue": "10",
-    "Sorcerer": "11",
-    "Warlock": "12" ,
-    "Wizard": "13"
+    "Paladin": "Chosen weapons, chain mail, a holy symbol, chosen adventuring pack",
+    "Ranger": "Chosen weapons, a longbow, a quiver of 20 arrows, chosen armor, chosen adventuring pack",
+    "Rogue": "Chosen weapons, two daggers, leather armor, thieves tools, chosen adventuring pack",
+    "Sorcerer": "Chosen weapon, two daggers, chosen magical item, chosen adventuring pack",
+    "Warlock": "Chosen weapons, two daggers, leather armor, chosen magical item, chosen adventuring pack",
+    "Wizard": "Chosen weapon, chosen magical item, a spellbook, chosen adventuring pack"
 }
