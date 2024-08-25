@@ -380,7 +380,7 @@ function setClassOptions(feClass)
                 <option value="Explorer's Pack">Explorer's pack</option>\
             </select>\
         </form>`;
-        document.getElementById('classOptions').innerHTML = tempInner;
+        document.getElementById('classOptions').innerHTML = "<div class='note'>Fighter Note: If you choose leather armor, a weapon will appear in your armor slot. A longbow is a weapon, not armor</div>" + tempInner;
     }
     else if (feClass.localeCompare("Rogue") == 0)
     {
