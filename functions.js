@@ -321,11 +321,72 @@ function setClassOptions(feClass)
         </form>`;
         document.getElementById('classOptions').innerHTML = tempInner;
     }
+    else if (feClass.localeCompare("Fighter") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="FighterChoices">Choose weapons, armor, and an adventuring pack</label>\
+            <select id="w1" name="w1">\
+                <option value="Light crossbow and 20 bolts">Light crossbow and 20 bolts</option>\
+                <option value="2 handaxes">2 handaxes</option>\
+            </select>\
+            <select id="w2" name="w2">\
+                <option value="Battleaxe">Battleaxe</option>\
+                <option value="Flail">Flail</option>\
+                <option value="Glaive">Glaive</option>\
+                <option value="Greataxe">Greataxe</option>\
+                <option value="Greatsword">Greatsword</option>\
+                <option value="Halberd">Halberd</option>\
+                <option value="Lance">Lance</option>\
+                <option value="Longsword">Longsword</option>\
+                <option value="Maul">Maul</option>\
+                <option value="Morningstar">Morningstar</option>\
+                <option value="Pike">Pike</option>\
+                <option value="Rapier">Rapier</option>\
+                <option value="Scimitar">Scimitar</option>\
+                <option value="Shortsword">Shortsword</option>\
+                <option value="Trident">Trident</option>\
+                <option value="War Pick">War Pick</option>\
+                <option value="Warhammer">Warhammer</option>\
+                <option value="Whip">Whip</option>\
+            </select>\
+            <select id="w3" name="w3">\
+                <option value="Shield">Shield</option>\
+                <option value="Battleaxe">Battleaxe</option>\
+                <option value="Flail">Flail</option>\
+                <option value="Glaive">Glaive</option>\
+                <option value="Greataxe">Greataxe</option>\
+                <option value="Greatsword">Greatsword</option>\
+                <option value="Halberd">Halberd</option>\
+                <option value="Lance">Lance</option>\
+                <option value="Longsword">Longsword</option>\
+                <option value="Maul">Maul</option>\
+                <option value="Morningstar">Morningstar</option>\
+                <option value="Pike">Pike</option>\
+                <option value="Rapier">Rapier</option>\
+                <option value="Scimitar">Scimitar</option>\
+                <option value="Shortsword">Shortsword</option>\
+                <option value="Trident">Trident</option>\
+                <option value="War Pick">War Pick</option>\
+                <option value="Warhammer">Warhammer</option>\
+                <option value="Whip">Whip</option>\
+            </select>\
+            <select id="a1" name="a1">\
+                <option value="Chain mail">Chain mail</option>\
+                <option value="Leather armor, a longbow and 20 arrows">Leather armor, a longbow and 20 arrows</option>\
+            </select>\
+            <select id="p1" name="p1">\
+                <option value="Dungeoneer's Pack">Dungeoneer's pack</option>\
+                <option value="Explorer's Pack">Explorer's pack</option>\
+            </select>\
+        </form>`;
+        document.getElementById('classOptions').innerHTML = tempInner;
+    }
     else if (feClass.localeCompare("Rogue") == 0)
     {
         const tempInner = 
         `<form action="./index.html" onsubmit="return false">\
-            <label for="RogueChoices">Choose two weapons and a pack of tools</label>\
+            <label for="RogueChoices">Choose two weapons and an adventuring pack</label>\
             <select id="w1" name="w1">\
                 <option value="Rapier">Rapier</option>\
                 <option value="Shortsword">Shortsword</option>\
