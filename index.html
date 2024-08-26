@@ -8,50 +8,57 @@
     <script src="./functions.js" defer></script>
 </head>
 <body>
-    <h1>5e Starting Item Generator</h1>
-    <div class = classes>
-        <form action="./index.html" onsubmit="return false">
-            <label for="5e-classes">Choose a Class and Background</label>
-            <select id="5e-classes" name="user-class" onchange="setClassOptions(document.getElementById('5e-classes').value); determineIfGenerateShouldBeThere(document.getElementById('5e-classes').value, document.getElementById('5e-backgrounds').value);">
-                <option value="--Choose a Class--">--Choose a Class--</option>
-                <option value="Artificer">Artificer</option>
-                <option value="Barbarian">Barbarian</option>
-                <option value="Bard">Bard</option>
-                <option value="Cleric">Cleric</option>
-                <option value="Druid">Druid</option>
-                <option value="Fighter">Fighter</option>
-                <option value="Monk">Monk</option>
-                <option value="Paladin">Paladin</option>
-                <option value="Ranger">Ranger</option>
-                <option value="Rogue">Rogue</option>
-                <option value="Sorcerer">Sorcerer</option>
-                <option value="Warlock">Warlock</option>
-                <option value="Wizard">Wizard</option>
-            </select>
-            <select id="5e-backgrounds" name="user-background" onchange="setBackgroundOptions(document.getElementById('5e-backgrounds').value); determineIfGenerateShouldBeThere(document.getElementById('5e-classes').value, document.getElementById('5e-backgrounds').value);">
-                <option value="--Choose a Background--">--Choose a Background--</option>
-                <option value="Acolyte">Acolyte</option>
-                <option value="Charlatan">Charlatan</option>
-                <option value="Criminal">Criminal</option>
-                <option value="Entertainer">Entertainer</option>
-                <option value="Folk Hero">Folk Hero</option>
-                <option value="Guild Artisan">Guild Artisan</option>
-                <option value="Noble">Noble</option>
-                <option value="Outlander">Outlander</option>
-                <option value="Sage">Sage</option>
-                <option value="Soldier">Soldier</option>
-                <option value="Urchin">Urchin</option>
-            </select>
-            <!--<button type="submit" onClick="generate(document.getElementById('5e-classes').value)">Submit</button>-->
-        </form>
+    <div class = above>
+        <p>
+            <a href="index.html">Generator</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="about.html">About</a>
+        </p>
     </div>
+    <div class = below>
+        <h1>5e Starting Item Generator</h1>
+        <div class = classes>
+            <form action="./index.html" onsubmit="return false">
+                <label for="5e-classes">Choose a Class and Background</label>
+                <select id="5e-classes" name="user-class" onchange="setClassOptions(document.getElementById('5e-classes').value); determineIfGenerateShouldBeThere(document.getElementById('5e-classes').value, document.getElementById('5e-backgrounds').value);">
+                    <option value="--Choose a Class--">--Choose a Class--</option>
+                    <option value="Artificer">Artificer</option>
+                    <option value="Barbarian">Barbarian</option>
+                    <option value="Bard">Bard</option>
+                    <option value="Cleric">Cleric</option>
+                    <option value="Druid">Druid</option>
+                    <option value="Fighter">Fighter</option>
+                    <option value="Monk">Monk</option>
+                    <option value="Paladin">Paladin</option>
+                    <option value="Ranger">Ranger</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Sorcerer">Sorcerer</option>
+                    <option value="Warlock">Warlock</option>
+                    <option value="Wizard">Wizard</option>
+                </select>
+                <select id="5e-backgrounds" name="user-background" onchange="setBackgroundOptions(document.getElementById('5e-backgrounds').value); determineIfGenerateShouldBeThere(document.getElementById('5e-classes').value, document.getElementById('5e-backgrounds').value);">
+                    <option value="--Choose a Background--">--Choose a Background--</option>
+                    <option value="Acolyte">Acolyte</option>
+                    <option value="Charlatan">Charlatan</option>
+                    <option value="Criminal">Criminal</option>
+                    <option value="Entertainer">Entertainer</option>
+                    <option value="Folk Hero">Folk Hero</option>
+                    <option value="Guild Artisan">Guild Artisan</option>
+                    <option value="Noble">Noble</option>
+                    <option value="Outlander">Outlander</option>
+                    <option value="Sage">Sage</option>
+                    <option value="Soldier">Soldier</option>
+                    <option value="Urchin">Urchin</option>
+                </select>
+                <!--<button type="submit" onClick="generate(document.getElementById('5e-classes').value)">Submit</button>-->
+            </form>
+        </div>
 
-    <div id = "classOptions"></div>
-    <div id = "backgroundOptions"></div>
-    <div id = "submitButton"></div>
-    <div id = "result"></div>
-    <div id = "cresult"></div>
-    <div id = "bresult"></div>
-    <div id = "pack"></div>
+        <div id = "classOptions"></div>
+        <div id = "backgroundOptions"></div>
+        <div id = "submitButton"></div>
+        <div id = "result"></div>
+        <div id = "cresult"></div>
+        <div id = "bresult"></div>
+        <div id = "pack"></div>
+    </div>
 </body>
 </html>
