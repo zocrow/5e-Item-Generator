@@ -1,14 +1,13 @@
 {
-    "Acolyte": "A holy symbol (a gift when you entered priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments (religious clothing), common clothes, a pouch with 15gp",
-    "Charlatan": "Fine clothes, a disguise kit, [con choice, check website], [pouch with 15gp]",
-    "City Watch": "",
-    "Criminal": "",
-    "Entertainer": "",
-    "Folk Hero": "",
-    "Guild Artisan": "",
-    "Noble": "",
-    "Outlander": "",
-    "Sage": "",
-    "Soldier": "",
-    "Urchin": ""
+    "Acolyte": "A holy symbol (a gift when you entered priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments (religious clothing), common clothes, a pouch containing 15gp",
+    "Charlatan": "Chosen con, fine clothes, a disguise kit, a pouch containing 15gp",
+    "Criminal": "A crowbar, a set of dark common clothes including a hood, a pouch containing 15gp",
+    "Entertainer": "Chosen instrument, chosen favor of an admirer, a costume, and a pouch containing 15gp",
+    "Folk Hero": "Chosen artisan's tools, a shovel, an iron pot, a set of common clothes, and a pouch containing 10gp",
+    "Guild Artisan": "Chosen artisan's tools, a letter of introduction from your guild, a set of traveler's clothes, and a pouch containing 15gp",
+    "Noble": "A set of fine clothes, a signet ring, a scroll of pedigree, a purse containing 25gp",
+    "Outlander": "A staff, a hunting trap, a trophy from an animal you killed, a set of traveler's clothes, a pouch containing 10gp",
+    "Sage": "A bottle of ink, a quill, a small knife, a letter from a dead colleague posing a question you have not yet been able to answer, a set of common clothes, a pouch containing 10gp",
+    "Soldier": "Chosen trophy, chosen game tools, an insignia of rank, a set of common clothes, a pouch containing 10gp",
+    "Urchin": "A small knife, a map of the city you grew up in, a pet mouse, a token to remember your parents by, a set of common clothes, a pouch containing 10gp"
 }

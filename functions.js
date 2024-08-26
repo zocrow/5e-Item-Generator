@@ -30,6 +30,7 @@ async function generate(feClass, feBackground, weapons, armor)
             //This is not a very sophisticated way of solving this issue of a null 'result' variable, but it works.
         }
     }
+    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML.slice(0, -2);
 
     document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone1'>Chosen Armor:</h3>";
 
@@ -45,23 +46,40 @@ async function generate(feClass, feBackground, weapons, armor)
 
     //formatting for special items tab in item list
     //Exclusively for bard, sorceror, warlock, and wizard
-    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone2'>Special Items:</h3>";
+    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone2'>Chosen Special Item:</h3>";
+    try
+    {
+        document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + document.getElementById('s1').value;
+    }
+    catch
+    {
+        document.getElementById('delIfNone2').innerHTML = "";
+    }
+
+    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<h3 id='delIfNone4'>Chosen Background Item(s):</h3>";
     for (i = 1; i < 5; i++)
     {
-        curSpecial = "s" + i.toString();
+        curItem = "c" + i.toString();
         try
         {
-            document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + document.getElementById(curSpecial).value + ", ";
+            document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + document.getElementById(curItem).value + ", ";
+            //TODO: Chop off the last comma
         }
         catch(error)
         {
-            //Once again, not very sophisticated
-            //If i = 1 and the value of s1 is null, then just delete the special items tab
             if (i == 1)
             {
-                document.getElementById('delIfNone2').innerHTML = "";
+                document.getElementById('delIfNone4').innerHTML = "";
             }
         }
+    }
+    try
+    {
+        document.getElementById('result').innerHTML = document.getElementById('result').innerHTML.slice(0, -2);
+    }
+    catch(error)
+    {
+        //Again, no sophistication lol
     }
     
     document.getElementById('cresult').innerHTML = document.getElementById('cresult').innerHTML + "<h3 id='delIfNone3'>Items granted by class:</h3>";
@@ -406,6 +424,107 @@ function setClassOptions(feClass)
         </form>`;
         document.getElementById('classOptions').innerHTML = tempInner;
     }
+    else if (feClass.localeCompare("Paladin") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="PaladinChoices">Choose 3 weapon and adventuring pack</label>\
+            <select id="w1" name="w1">\
+                <option value="Battleaxe">Battleaxe</option>\
+                <option value="Flail">Flail</option>\
+                <option value="Glaive">Glaive</option>\
+                <option value="Greataxe">Greataxe</option>\
+                <option value="Greatsword">Greatsword</option>\
+                <option value="Halberd">Halberd</option>\
+                <option value="Lance">Lance</option>\
+                <option value="Longsword">Longsword</option>\
+                <option value="Maul">Maul</option>\
+                <option value="Morningstar">Morningstar</option>\
+                <option value="Pike">Pike</option>\
+                <option value="Rapier">Rapier</option>\
+                <option value="Scimitar">Scimitar</option>\
+                <option value="Shortsword">Shortsword</option>\
+                <option value="Trident">Trident</option>\
+                <option value="War Pick">War Pick</option>\
+                <option value="Warhammer">Warhammer</option>\
+                <option value="Whip">Whip</option>\
+            </select>\
+            <select id="w2" name="w2">\
+                <option value="Shield">Shield</option>\
+                <option value="Battleaxe">Battleaxe</option>\
+                <option value="Flail">Flail</option>\
+                <option value="Glaive">Glaive</option>\
+                <option value="Greataxe">Greataxe</option>\
+                <option value="Greatsword">Greatsword</option>\
+                <option value="Halberd">Halberd</option>\
+                <option value="Lance">Lance</option>\
+                <option value="Longsword">Longsword</option>\
+                <option value="Maul">Maul</option>\
+                <option value="Morningstar">Morningstar</option>\
+                <option value="Pike">Pike</option>\
+                <option value="Rapier">Rapier</option>\
+                <option value="Scimitar">Scimitar</option>\
+                <option value="Shortsword">Shortsword</option>\
+                <option value="Trident">Trident</option>\
+                <option value="War Pick">War Pick</option>\
+                <option value="Warhammer">Warhammer</option>\
+                <option value="Whip">Whip</option>\
+            </select>\
+            <select id="w3" name="w3">\
+                <option value="Five javelins">Five javelins</option>\
+                <option value="Club">Club</option>\
+                <option value="Dagger">Dagger</option>\
+                <option value="Greatclub">Greatclub</option>\
+                <option value="Javelin">Javelin</option>\
+                <option value="Light Hammer">Light Hammer</option>\
+                <option value="Mace">Mace</option>\
+                <option value="Quarterstaff">Quarterstaff</option>\
+                <option value="Sickle">Sickle</option>\
+                <option value="Spear">Spear</option>\
+            </select>\
+            <select id="p1" name="p1">\
+                <option value="Priest's Pack">Priest's pack</option>\
+                <option value="Explorer's Pack">Explorer's pack</option>\
+            </select>\
+        </form>`;
+        document.getElementById('classOptions').innerHTML = tempInner;
+    }
+    else if (feClass.localeCompare("Ranger") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="RangerChoices">Choose 2 weapons and adventuring pack</label>\
+            <select id="w1" name="w1">\
+                <option value="Shortsword">Shortsword</option>\
+                <option value="Club">Club</option>\
+                <option value="Dagger">Dagger</option>\
+                <option value="Greatclub">Greatclub</option>\
+                <option value="Javelin">Javelin</option>\
+                <option value="Light Hammer">Light Hammer</option>\
+                <option value="Mace">Mace</option>\
+                <option value="Quarterstaff">Quarterstaff</option>\
+                <option value="Sickle">Sickle</option>\
+                <option value="Spear">Spear</option>\
+            </select>\
+            <select id="w2" name="w2">\
+                <option value="Shortsword">Shortsword</option>\
+                <option value="Club">Club</option>\
+                <option value="Dagger">Dagger</option>\
+                <option value="Greatclub">Greatclub</option>\
+                <option value="Javelin">Javelin</option>\
+                <option value="Light Hammer">Light Hammer</option>\
+                <option value="Mace">Mace</option>\
+                <option value="Quarterstaff">Quarterstaff</option>\
+                <option value="Sickle">Sickle</option>\
+                <option value="Spear">Spear</option>\
+            </select>\
+            <select id="p1" name="p1">\
+                <option value="Dungeoneer's Pack">Dungeoneer's pack</option>\
+                <option value="Explorer's Pack">Explorer's pack</option>\
+            </select>\
+        </form>`;
+        document.getElementById('classOptions').innerHTML = tempInner;
+    }
     else if (feClass.localeCompare("Rogue") == 0)
     {
         const tempInner = 
@@ -427,6 +546,82 @@ function setClassOptions(feClass)
         </form>`;
         document.getElementById('classOptions').innerHTML = tempInner;
     }
+    else if (feClass.localeCompare("Sorcerer") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="SorcererChoices">Choose a weapon, a magical item, and an adventuring pack</label>\
+            <select id="w1" name="w1">\
+                <option value="Light crossbow and 20 bolts">Light crossbow and 20 bolts</option>\
+                <option value="Club">Club</option>\
+                <option value="Dagger">Dagger</option>\
+                <option value="Greatclub">Greatclub</option>\
+                <option value="Javelin">Javelin</option>\
+                <option value="Light Hammer">Light Hammer</option>\
+                <option value="Mace">Mace</option>\
+                <option value="Quarterstaff">Quarterstaff</option>\
+                <option value="Sickle">Sickle</option>\
+                <option value="Spear">Spear</option>\
+            </select>\
+            <select id="s1" name="s1">\
+                <option value="Arcane focus">Arcane focus</option>\
+                <option value="Component pouch">Component pouch</option>\
+            </select>\
+            <select id="p1" name="p1">\
+                <option value="Dungeoneer's Pack">Dungeoneer's pack</option>\
+                <option value="Explorer's Pack">Explorer's pack</option>\
+            </select>\
+        </form>`;
+        document.getElementById('classOptions').innerHTML = tempInner;
+    }
+    else if (feClass.localeCompare("Warlock") == 0)
+        {
+            const tempInner = 
+            `<form action="./index.html" onsubmit="return false">\
+                <label for="WarlockChoices">Choose a weapon, a magical item, and an adventuring pack</label>\
+                <select id="w1" name="w1">\
+                    <option value="Light crossbow and 20 bolts">Light crossbow and 20 bolts</option>\
+                    <option value="Club">Club</option>\
+                    <option value="Dagger">Dagger</option>\
+                    <option value="Greatclub">Greatclub</option>\
+                    <option value="Javelin">Javelin</option>\
+                    <option value="Light Hammer">Light Hammer</option>\
+                    <option value="Mace">Mace</option>\
+                    <option value="Quarterstaff">Quarterstaff</option>\
+                    <option value="Sickle">Sickle</option>\
+                    <option value="Spear">Spear</option>\
+                </select>\
+                <select id="s1" name="s1">\
+                    <option value="Arcane focus">Arcane focus</option>\
+                    <option value="Component pouch">Component pouch</option>\
+                </select>\
+                <select id="p1" name="p1">\
+                    <option value="Scholar's Pack">Scholar's pack</option>\
+                    <option value="Dungeoneer's Pack">Dungeoneer's pack</option>\
+                </select>\
+            </form>`;
+            document.getElementById('classOptions').innerHTML = tempInner;
+        }
+    else if (feClass.localeCompare("Wizard") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="WizardChoices">Choose a weapon, a magical item, and an adventuring pack</label>\
+            <select id="w1" name="w1">\
+                <option value="Quarterstaff">Quarterstaff</option>\
+                <option value="Dagger">Dagger</option>\
+            </select>\
+            <select id="s1" name="s1">\
+                <option value="Arcane focus">Arcane focus</option>\
+                <option value="Component pouch">Component pouch</option>\
+            </select>\
+            <select id="p1" name="p1">\
+                <option value="Scholar's Pack">Scholar's pack</option>\
+                <option value="Explorer's Pack">Explorer's pack</option>\
+            </select>\
+        </form>`;
+        document.getElementById('classOptions').innerHTML = tempInner;
+    }
     else
     {
         const tempInner = "";
@@ -442,13 +637,95 @@ function setBackgroundOptions(feBackground)
     //If the background is not selected, just put nothing in the class options div
     if (feBackground.localeCompare("--Choose a Background--") == 0)
     {
-        var tempInner = '';
+        const tempInner = '';
         document.getElementById('backgroundOptions').innerHTML = tempInner;
     }
-    //No options for city watch, so we just leave the class options div blank
-    else if (feBackground.localeCompare("City Watch") == 0)
+    else if (feBackground.localeCompare("Charlatan") == 0)
     {
-        var tempInner = '';
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="CharlatanChoices">Choose a con</label>\
+            <select id="c1" name="c1">\
+                <option value="Ten stoppered bottles filled with colored liquid">Ten stoppered bottles filled with colored liquid</option>\
+                <option value="A set of weighted dice">A set of weighted dice</option>\
+                <option value="A deck of marked cards">A deck of marked cards</option>\
+                <option value="A signet ring of an imaginary duke">A signet ring of an imaginary duke</option>\
+            </select>\
+        </form>`;
+        document.getElementById('backgroundOptions').innerHTML = tempInner;
+    }
+    else if (feBackground.localeCompare("Entertainer") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="CharlatanChoices">Choose an instrument and a favor of an admirer</label>\
+            <select id="c1" name="c1">\
+                <option value="Bagpipes">Bagpipes</option>\
+                <option value="Drum">Drum</option>\
+                <option value="Dulcimer">Dulcimer</option>\
+                <option value="Flute">Flute</option>\
+                <option value="Lyre">Lyre</option>\
+                <option value="Horn">Horn</option>\
+                <option value="Pan flute">Pan flute</option>\
+                <option value="Shawm">Shawm</option>\
+                <option value="Viol">Viol</option>\
+            </select>\
+            <select id="c2" name="c2">\
+                <option value="A love letter">A love letter</option>\
+                <option value="A lock of hair">A lock of hair</option>\
+                <option value="A trinket">A trinket</option>\
+            </select>\
+        </form>`;
+        document.getElementById('backgroundOptions').innerHTML = tempInner;
+    }
+    else if (feBackground.localeCompare("Folk Hero") == 0 || feBackground.localeCompare("Guild Artisan") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="FolkHeroChoices">Choose a set of artisan's tools</label>\
+            <select id="c1" name="c1">\
+                <option value="Alchemist’s supplies">Alchemist’s supplies</option>\
+                <option value="Brewer’s supplies">Brewer’s supplies</option>\
+                <option value="Calligrapher's supplies">Calligrapher's supplies</option>\
+                <option value="Carpenter’s tools">Carpenter’s tools</option>\
+                <option value="Cartographer’s tools">Cartographer’s tools</option>\
+                <option value="Cobbler’s tools">Cobbler’s tools</option>\
+                <option value="Cook’s utensils">Cook’s utensils</option>\
+                <option value="Glassblower’s tools">Glassblower’s tools</option>\
+                <option value="Jeweler’s tools">Jeweler’s tools</option>\
+                <option value="Leatherworker’s tools">Leatherworker’s tools</option>\
+                <option value="Mason’s tools">Mason’s tools</option>\
+                <option value="Painter’s supplies">Painter’s supplies</option>\
+                <option value="Potter’s tools">Potter’s tools</option>\
+                <option value="Smith’s tools">Smith’s tools</option>\
+                <option value="Tinker’s tools">Tinker’s tools</option>\
+                <option value="Weaver’s tools">Weaver’s tools</option>\
+                <option value="Woodcarver’s tools">Woodcarver’s tools</option>\
+            </select>\
+        </form>`;
+        document.getElementById('backgroundOptions').innerHTML = tempInner;
+    }
+    else if (feBackground.localeCompare("Soldier") == 0)
+    {
+        const tempInner = 
+        `<form action="./index.html" onsubmit="return false">\
+            <label for="SoldierChoices">Choose a trophy and tool for games</label>\
+            <select id="c1" name="c1">\
+                <option value="A dagger">A dagger</option>\
+                <option value="A broken blade">A broken blade</option>\
+                <option value="A piece of banner">A piece of banner</option>\
+            </select>\
+            <select id="c2" name="c2">\
+                <option value="A deck of cards">A deck of cards</option>\
+                <option value="A set of bone dice">A set of bone dice</option>\
+            </select>\
+        </form>`;
+        document.getElementById('backgroundOptions').innerHTML = tempInner;
+    }
+    else
+    {
+        const tempInner = 
+        '';
         document.getElementById('backgroundOptions').innerHTML = tempInner;
     }
     //To see what feBackground is 
